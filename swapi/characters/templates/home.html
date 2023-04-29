@@ -1,0 +1,91 @@
+{% load static %}
+{% load render_table from django_tables2 %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'css/bootstrap-3.4.1.min.css' %}" >
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      * {box-sizing: border-box;}
+
+      body { 
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .header {
+        overflow: hidden;
+        background-color: yellow;
+        padding: 20px 10px;
+      }
+
+      .collections {
+          overflow: hidden;
+          padding: 20px 10px;
+        }
+
+      .header a, .collections a{
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px; 
+        line-height: 25px;
+        border-radius: 4px;
+      }
+
+      .header a.logo, .collections a.logo {
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      .header a.active {
+        background-color: dodgerblue;
+        color: white;
+      }
+
+      .collections a.active {
+          background-color: green;
+          color: white;
+        }
+
+      .header-left, .collections-left {
+        float: left;
+      }
+
+      @media screen and (max-width: 500px) {
+        .header a, .collection a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+        
+        .header-left, .collections-left {
+          float: none;
+        }
+      }
+</style>
+</head>
+
+<body>
+      <div class="header"> 
+        <a class="logo">Star War Explorer</a>
+        <div class="header-left">
+          <a class="active" href="/">Collections</a>
+        </div>
+      </div>
+
+      <div class="collections"> 
+          <a class="logo">Collections</a>
+          <div class="collections-left">
+            <a class="active" href="fetch" type="button">Fetch</a>
+          </div>
+      </div>
+
+        <div>
+          {% render_table table %}
+        </div>
+</body>
+</html>
